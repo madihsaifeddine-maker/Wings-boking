@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI كخدمة - قالب جاهز</title>
+  <style>
+    :root{
+      --primary:#4b7bdc;
+      --bg:#f7f9fc;
+      --card:#fff;
+      --text:#1f2a37;
+      --muted:#6b7280;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Arial, sans-serif}
+    header{background:var(--primary);color:#fff;padding:20px 16px;text-align:center}
+    header h1{margin:0;font-size:22px}
+    header p{margin:6px 0 0;font-size:12px;opacity:.95}
+    .container{max-width:1100px;margin:30px auto;padding:0 16px}
+    .section{margin-bottom:28px;background:var(--card);border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.05);padding:20px}
+    .section h2{margin:0 0 8px;font-size:20px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+    .card{padding:12px;border-radius:10px;border:1px solid #eef2f7;background:#fff}
+    .card h3{margin:0 0 6px;font-size:16px}
+    .card p{margin:0;font-size:13px;color:var(--muted)}
+    #chat{ height:420px; overflow:auto; padding:12px; display:flex; flex-direction:column; gap:10px; }
+    .bubble{ padding:10px 14px; border-radius:18px; max-width:78%; }
+    .user{ background:#4CAF50; color:white; align-self:flex-end; }
+    .ai{ background:#eef2f7; color:#333; align-self:flex-start; }
+    form{ display:flex; padding:10px 12px; gap:8px; border-top:1px solid #eee; }
+    input{ flex:1; padding:12px; border:1px solid #ddd; border-radius:8px; }
+    button{ padding:12px 16px; border-radius:8px; border:0; cursor:pointer; }
+    .btn{ background:var(--primary); color:white; }
+    .btn.secondary{ background:#e5e7eb; color:#111; }
+    footer{ text-align:center; padding:14px 0; color:#64748b }
+    @media (max-width:600px){
+      header{padding:14px}
+      .section{padding:14px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI كخدمة - قالب جاهز مع تكامل API مجاني</h1>
+    <p>واجهة دردشة مع نموذج AI عبر API مجاني (مثلاً Hugging Face/OpenAI طبقة مجانية)</p>
+  </header>
+
+  <main class="container">
+    <section class="section" id="about">
+      <h2>عن المنصة</h2>
+      <p>واجهة دردشة بسيطة مع AI تقدر تستعملها فالتعليم، الخدماتAI أو التجارة. الكود يدعم التوصيل مع API مجاني ويقدر يتبدّل بسهولة.</p>
+    </section>
+
+    <section class="section" id="services">
+      <h2>خدمات مقترحة</h2>
+      <div class="grid" id="servicesGrid">
+        <div class="card">
+          <h3>استشارات AI وتكامل</h3>
+          <p>اختيار التقنيات المناسبة ودمجها فالمشروعات</p>
+        </div>
+        <div class="card">
+          <h3>نماذج مخصصة</h3>
+          <p>NLP، تحليل نصوص، توصيات، تصنيف صور</p>
+        </div>
+        <div class="card">
+          <h3>التعليم والتدريب</h3>
+          <p>دروس وجلسات تطبيقية ومشاريع صغيرة</p>
+        </div>
+        <div class="card">
+          <h3>تجارة رقمية</h3>
+          <p>بيع خدمات رقمية وقوالب ومواد تعليمية</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="chatSection">
+      <h2>المحادثة مع AI</h2>
+      <div id="chat"></div>
+      <form id="form">
+        <input id="input" placeholder="اكتب سؤالك..."/>
+        <button class="btn" type="submit">إرسال</button>
+      </form>
+      <div style="font-size:12px; color:#64748b; margin-top:6px">
+        ملاحظة: هاد المثال يستعمل نموذج مجاني بسيط/mock. لمسخدمين حقيقيين، استخدم API مجاني مناسب ومفتوح المصدر.
+      </div>
+    </section>
+
+    <section class="section" id="setup">
+      <h2>إعدادات API (نموذج)</h2>
+      <p>استبدل قيمة API_ENDPOINT و API_KEY بالمعلومات ديالك من مزود API مجاني.</p>
+      <pre style="background:#f8fafc; padding:12px; border-radius:8px; overflow:auto;">
+<code>
+// مثال بسيط: استدعاء HuggingFace Inference API
+const API_ENDPOINT = "https://api-inference.huggingface.co/models/{model}";
+const API_KEY = "YOUR_API_KEY";
+
+async function queryAI(prompt){
+  const res = await fetch(API_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ inputs: prompt })
+  });
+  const data = await res.json();
+  return data;
+}
+</code>
+      </pre>
+      <p>مهم: خلي API_KEY ظاهراً فقط فبيئة آمنة وتجنب نشره فالكود العام.</p>
+    </section>
+
+  </main>
+
+  <footer>جميع الحقوق محفوظة • قالب AI كخدمة</footer>
+
+  <script>
+    // إضافة رسائل افتراضية (يمكنك ربطها ب API لاحقاً)
+    const chat = document.getElementById('chat');
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+
+    function addBubble(text, klass){
+      const d = document.createElement('div');
+      d.className = 'bubble ' + klass;
+      d.textContent = text;
+      chat.appendChild(d);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    // نموذج بسيط mock AI
+    function aiReply(userText){
+      const t = (userText || "").toLowerCase();
+      if(t.includes('سلام') || t.includes('مرحبا')) return 'أهلاً! شنو السؤال ديالك اليوم؟';
+      if(t.includes('كيف') || t.includes('شرح')) return 'يمكن نوضح لك خطوة بخطوة أو نعطيك مثال عملي.';
+      return 'فهمت. نقدر نعطيك نصائح وتوجيهات حسب السياق.';
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if(!text) return;
+      addBubble(text, 'user');
+      input.value = '';
+
+      // استجابة AI mock
+      const reply = aiReply(text);
+      setTimeout(()
+
+
+
+Write "continue" to complete the response
