@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Réservation – Soirées Premium</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay"></div>
+    <img src="bg-elite.jpg" alt="Background luxueux" class="bg" />
+    <div class="container">
+      <h1>Réservez votre soirée Premium</h1>
+      <p>Une expérience exceptionnelle, juste pour vous.</p>
+      <button>Voir les événements</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="reservation-form" aria-label="Formulaire de réservation">
+      <h2>Réservation</h2>
+      <form>
+        <label>
+          Nom complet
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          Téléphone
+          <input type="tel" name="phone" required />
+        </label>
+
+        <label>
+          Email (optionnel)
+          <input type="email" name="email" />
+        </label>
+
+        <label>
+          Date
+          <input type="date" name="date" required />
+        </label>
+
+        <label>
+          Nombre de personnes
+          <input type="number" name="people" min="1" required />
+        </label>
+
+        <label>
+          Type de table
+          <select name="tableType" required>
+            <option>VIP</option>
+            <Gold</option>
+            <Standard</option>
+          </select>
+        </label>
+
+        <label>
+          Notes
+          <textarea name="notes" rows="4"></textarea>
+        </label>
+
+        <button type="submit">Soumettre la réservation</button>
+      </form>
+    </section>
+
+    <section id="gallery" aria-label="Galerie">
+      <!-- Grid photos/videos -->
+    </section>
+
+    <section id="calendar" aria-label="Calendrier des événements">
+      <!-- Calendar widget -->
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
